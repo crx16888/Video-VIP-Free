@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>VIP视频解析 - 全网VIP视频免费看</title>
+  <meta name="description" content="免费解析全网VIP视频，支持腾讯视频、爱奇艺、优酷、芒果TV、咪咕视频等主流平台">
+  <meta name="theme-color" content="#6366f1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="VIP解析">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.svg">
+  <link rel="icon" href="icon-192.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="40" y2="40">
+              <stop offset="0%" stop-color="#6366f1"/>
+              <stop offset="100%" stop-color="#a855f7"/>
+            </linearGradient>
+          </defs>
+          <rect width="40" height="40" rx="10" fill="url(#g1)"/>
+          <polygon points="16,12 16,28 30,20" fill="#fff"/>
+        </svg>
+        <div>
+          <h1>VIP视频解析</h1>
+          <p class="subtitle">全网VIP视频免费看</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- URL Input -->
+    <section class="input-section">
+      <div class="input-wrapper">
+        <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </svg>
+        <input
+          type="url"
+          id="urlInput"
+          placeholder="粘贴视频链接..."
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        >
+        <button id="clearBtn" class="clear-btn" title="清空" style="display:none">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>
+          </svg>
+        </button>
+      </div>
+      <p id="errorMsg" class="error-msg"></p>
+      <div class="btn-row">
+        <button id="pasteBtn" class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+          </svg>
+          粘贴
+        </button>
+        <button id="parseBtn" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="6 3 20 12 6 21 6 3"/>
+          </svg>
+          开始解析
+        </button>
+      </div>
+    </section>
+
+    <!-- Video Player -->
+    <section id="playerSection" class="player-section" style="display:none">
+      <div class="player-header">
+        <h2>正在播放</h2>
+        <button id="closePlayer" class="close-btn" title="关闭播放器">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 6-12 12"/><path d="m6 6 12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="player-wrapper">
+        <iframe id="videoFrame" allowfullscreen allow="autoplay; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      </div>
+    </section>
+
+    <!-- Platforms -->
+    <section class="platforms-section">
+      <h2 class="section-title">热门平台</h2>
+      <div class="platforms-grid" id="platformsGrid"></div>
+    </section>
+
+    <!-- Tips -->
+    <section class="tips-section">
+      <div class="tips-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+          <path d="M9 18h6"/><path d="M10 22h4"/>
+        </svg>
+        <span>使用说明</span>
+      </div>
+      <ol class="tips-list">
+        <li>点击上方平台按钮，进入视频网站</li>
+        <li>找到想看的VIP视频，复制视频页面链接</li>
+        <li>回到本页，点击 <strong>粘贴</strong> 按钮</li>
+        <li>点击 <strong>开始解析</strong>，即可免费观看</li>
+      </ol>
+    </section>
+
+    <footer class="footer">
+      <p>仅供学习交流，请支持正版</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
