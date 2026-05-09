@@ -9,7 +9,7 @@
 
 ## 方式二：安装 WebClip 描述文件
 
-1. 在 iPhone 或 iPad 上下载 `VIP视频解析-iOS-iPadOS-WebClip.mobileconfig`。
+1. 在 iPhone 或 iPad 上下载 `vip-parser-ios-ipados-webclip.mobileconfig`。
 2. 打开「设置」，进入已下载的描述文件。
 3. 按提示安装。
 4. 安装完成后，主屏幕会出现「VIP解析」图标。
